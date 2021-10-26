@@ -1,0 +1,46 @@
+.globalPadding{
+  padding:2%;
+}
+
+.mat-raised-button{
+
+  background-color: #DF7007;
+  color: white;
+
+}
+
+.button-padding{
+
+  margin-left: 5%;
+  margin-right: 5%;
+
+}
+
+
+.logo-padding{
+  padding: 30px;
+}
+
+.img-responsive {
+  max-width: 40%;
+  height: auto;
+  display: block;
+  
+}
+
+.mat-form-field{
+
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+
+@media only screen and (max-width: 992px) {
+  
+  .img-responsive {
+
+    max-width: 100%;
+ 
+    
+  }
+}
