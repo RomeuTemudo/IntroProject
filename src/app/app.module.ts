@@ -17,6 +17,13 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+
+
+
 
 
 
@@ -27,7 +34,8 @@ import { HomeComponent } from './components/home/home.component';
     LoginComponent,
     RecoverPasswordComponent,
     NotFoundComponent,
-    HomeComponent,
+    HomeComponent
+    
   
   
 
@@ -44,7 +52,12 @@ import { HomeComponent } from './components/home/home.component';
     MatCheckboxModule,
     MatRadioModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatDividerModule
+
     
 
   ],
