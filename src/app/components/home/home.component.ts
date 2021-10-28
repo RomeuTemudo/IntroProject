@@ -14,6 +14,7 @@ import{delay} from 'rxjs/operators';
 export class HomeComponent implements OnInit {
 
   message = '';
+  display = false;
 
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
@@ -59,6 +60,19 @@ export class HomeComponent implements OnInit {
   logout(): void {
 
     this.http.post('http://localhost:8000/api/logout', {}, {withCredentials: true}).subscribe()
+
+  }
+
+  showMasterdata(): void {
+
+    this.display = !this.display;
+
+  }
+
+  showCompanies(): void {
+
+    this.display = !this.display;
+    
 
   }
 

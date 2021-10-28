@@ -21,6 +21,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import { SensorsComponent } from './components/sensors/sensors.component';
+import {MatListModule} from '@angular/material/list';
+import { MessagesComponent } from './components/messages/messages.component';
 
 
 
@@ -34,7 +37,10 @@ import {MatDividerModule} from '@angular/material/divider';
     LoginComponent,
     RecoverPasswordComponent,
     NotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    SensorsComponent,
+    MessagesComponent
+
     
   
   
@@ -56,7 +62,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule
 
     
 

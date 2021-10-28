@@ -1,0 +1,15 @@
+<h2>Fucking sensors list</h2>
+<ul class="sensors">
+    <li *ngFor="let sensor of sensors" [class.selected]="sensor === selectedSensor" (click)="onSelect(sensor)">
+        <span class="badge">{{sensor.id}}</span> {{sensor.name}}
+    </li>
+</ul>
+<app-messages></app-messages>
+
+
+<!--<mat-selection-list #sensor [multiple]="false">
+    <mat-list-option *ngFor="let sensor of sensors" [value]="sensor.id">
+      {{sensor.name}}
+    </mat-list-option>
+  </mat-selection-list>-->
+
