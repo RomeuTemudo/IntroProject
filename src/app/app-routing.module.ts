@@ -11,10 +11,15 @@ import { MessagesComponent } from './components/messages/messages.component';
 
 const routes: Routes = [
   {path: 'login', component:LoginComponent},
-  {path: 'sensors',component:SensorsComponent},
   {path: 'recover-password', component:RecoverPasswordComponent},
   
-  {path: 'home', component:HomeComponent},
+  {path: 'home', component:HomeComponent, children:
+  [
+    {path: '', redirectTo: 'sensors', pathMatch:'full'}, //home por default abre o sensors
+    {path: 'sensors',component:SensorsComponent},
+   
+  ]},
+
   {path: '', redirectTo: '/login', pathMatch:'full'},
   {path: '**' ,component:NotFoundComponent}
 
