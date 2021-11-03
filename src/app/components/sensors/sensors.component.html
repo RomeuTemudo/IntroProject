@@ -1,9 +1,11 @@
-<h2>Fucking sensors list</h2>
+<h2>SENSOR MANAGEMENT</h2>
+<button  class = "button-padding" mat-raised-button (click)="onCreateSensor()">Add new sensor</button>
 <ul class="sensors">
     <li *ngFor="let sensor of sensors" [class.selected]="sensor === selectedSensor" (click)="onSelect(sensor)">
         <span class="badge">{{sensor.id}}</span> {{sensor.name}}
     </li>
 </ul>
+
 <app-messages></app-messages>
 
 

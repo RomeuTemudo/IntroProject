@@ -24,6 +24,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import { SensorsComponent } from './components/sensors/sensors.component';
 import {MatListModule} from '@angular/material/list';
 import { MessagesComponent } from './components/messages/messages.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AddSensorComponent } from './components/add-sensor/add-sensor.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -39,7 +42,8 @@ import { MessagesComponent } from './components/messages/messages.component';
     NotFoundComponent,
     HomeComponent,
     SensorsComponent,
-    MessagesComponent
+    MessagesComponent,
+    AddSensorComponent
 
     
   
@@ -63,12 +67,15 @@ import { MessagesComponent } from './components/messages/messages.component';
     MatSidenavModule,
     MatIconModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule,
+    MatSelectModule
 
     
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[AddSensorComponent]
 })
 export class AppModule { }

@@ -3,6 +3,9 @@ import { Sensor } from 'src/app/interfaces/sensor';
 import { SENSORS } from 'src/app/mock.sensors';
 import { SensorService } from 'src/app/services/sensors/sensor.service';
 import { MessageService } from 'src/app/services/messages/message.service';
+import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
+import { AddSensorComponent } from '../add-sensor/add-sensor.component';
 
 
 
@@ -17,7 +20,7 @@ export class SensorsComponent implements OnInit {
  
   sensors: Sensor[] = [];
 
-  constructor(private sensorService: SensorService, private messageService: MessageService) { }
+  constructor(private sensorService: SensorService, private messageService: MessageService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -35,6 +38,12 @@ export class SensorsComponent implements OnInit {
     this.selectedSensor = sensor;
 
     this.messageService.add(`SensorComponent: Selected sensor id=${sensor.id}`);
+  }
+
+  onCreateSensor(){
+
+    this.dialog.open(AddSensorComponent)
+
   }
 
 }

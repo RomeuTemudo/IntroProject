@@ -6,6 +6,7 @@ import { RecoverPasswordComponent } from './components/recover-password/recover-
 import { HomeComponent } from './components/home/home.component';
 import { SensorsComponent } from './components/sensors/sensors.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { AddSensorComponent } from './components/add-sensor/add-sensor.component';
 
 
 
@@ -19,9 +20,11 @@ const routes: Routes = [
     {path: 'sensors',component:SensorsComponent},
    
   ]},
-
+  {path: 'add-sensor', component:AddSensorComponent},
+  {path: 'sensors',component:SensorsComponent},
   {path: '', redirectTo: '/login', pathMatch:'full'},
-  {path: '**' ,component:NotFoundComponent}
+  {path: '**' ,component:NotFoundComponent},
+  
 
 ];
 
