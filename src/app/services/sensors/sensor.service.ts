@@ -7,15 +7,29 @@ import { HttpClient,HttpHeaders, HttpParamsOptions } from '@angular/common/http'
 import { catchError,map,tap } from 'rxjs/operators';
 import { Category } from 'src/app/interfaces/category';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+    //Authorization: 'my-auth-token'
+  })
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class SensorService {
 
+
+ 
+
   constructor( private messageService: MessageService, private http: HttpClient) { }
 
   private sensorListUrl = 'http://localhost:8000/api/sensor_list';
   private categoriesListurl = 'http://localhost:8000/api/categories';
+  private sensorDeleteUrl = 'http://localhost:8000/api/delete_sensor';
+  private sensorEditUrl = 'http://localhost:8000/api/update_sensor';
+  private sensorAddUrl = 'http://localhost:8000/api/add_sensor';
+  private sensorSearchUrl = 'http://localhost:8000/api/search_sensor';
 
 
   getCategories(): Observable<Category[]>{
@@ -41,6 +55,55 @@ export class SensorService {
       );
     
   }
+
+  searchSensors(term: string): Observable<Sensor[]>{
+
+    if(!term.trim()){
+
+      return of([])
+    }
+
+    return this.http.get<Sensor[]>(`${this.sensorSearchUrl}/?name=${term}`)
+      .pipe(
+        tap(x => x.length ?
+          this.log(`found sensors matching "${term}"`) :
+          this.log(`no sensors matching "${term}"`)),
+        catchError(this.handleError<Sensor[]>('List of sensors', []))
+      );
+
+  }
+
+  deleteSensor(sensor: Sensor): Observable<Sensor[]>{
+
+    return this.http.post<Sensor[]>(this.sensorDeleteUrl,sensor,httpOptions)
+      .pipe(
+        tap(_ => this.log('sensor gone')),
+        catchError(this.handleError<Sensor[]>('List of sensors', []))
+      );
+
+  }
+
+  updateSensor(sensor: Sensor): Observable<Sensor[]>{
+
+    return this.http.post<Sensor[]>(this.sensorEditUrl,sensor,httpOptions)
+      .pipe(
+        tap(_ => this.log('sensor updated')),
+        catchError(this.handleError<Sensor[]>('List of sensors', []))
+      )
+
+
+  }
+
+  addSensor(sensor: Sensor): Observable<Sensor> {
+
+    console.log(sensor);
+    return this.http.post<Sensor>(this.sensorAddUrl, sensor, httpOptions).pipe(
+      tap(_ => this.log('new sensor created')),
+      catchError(this.handleError<Sensor>('addHero'))
+    );
+  }
+
+ 
 
   //wrap message service in a private func
   private log(message: string){

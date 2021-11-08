@@ -24,9 +24,14 @@ import {MatDividerModule} from '@angular/material/divider';
 import { SensorsComponent } from './components/sensors/sensors.component';
 import {MatListModule} from '@angular/material/list';
 import { MessagesComponent } from './components/messages/messages.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule,MatDialogRef} from '@angular/material/dialog';
 import { AddSensorComponent } from './components/add-sensor/add-sensor.component';
 import {MatSelectModule} from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { SensorDetailComponent } from './components/sensor-detail/sensor-detail.component';
+import { SensorSearchComponent } from './components/sensor-search/sensor-search.component';
+import { FilterPipe } from './Pipes/filter.pipe';
+
 
 
 
@@ -43,7 +48,10 @@ import {MatSelectModule} from '@angular/material/select';
     HomeComponent,
     SensorsComponent,
     MessagesComponent,
-    AddSensorComponent
+    AddSensorComponent,
+    SensorDetailComponent,
+    SensorSearchComponent,
+    FilterPipe
 
     
   
@@ -69,12 +77,18 @@ import {MatSelectModule} from '@angular/material/select';
     MatDividerModule,
     MatListModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule
 
     
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents:[AddSensorComponent]
 })

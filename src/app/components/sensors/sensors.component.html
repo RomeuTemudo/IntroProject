@@ -1,11 +1,34 @@
 <h2>SENSOR MANAGEMENT</h2>
-<button  class = "button-padding" mat-raised-button (click)="onCreateSensor()">Add new sensor</button>
+<button  class = "button-padding" mat-raised-button (click)="onAddSensor()">Add new sensor</button>
+<app-sensor-search></app-sensor-search>
+
+<!--div>
+  <label for="new-hero">Hero name: </label>
+  <input id="new-hero" #heroName />
+  <label for="new-hero">Hero Description: </label>
+  <input id="new-hero" #heroDescription />
+  <label for="new-hero">Hero category: </label>
+  <input id="caralho" #caralho />-->
+
+  <!-- (click) passes input value to add() and then clears the input 
+  <button class="add-button" (click)="add(heroName.value,heroDescription.value,caralho.value); heroName.value=''">
+    Add hero
+  </button>
+</div>-->
 <ul class="sensors">
-    <li *ngFor="let sensor of sensors" [class.selected]="sensor === selectedSensor" (click)="onSelect(sensor)">
-        <span class="badge">{{sensor.id}}</span> {{sensor.name}}
+  <!-- class.selected , just to highlight in black the selected sensor-->
+    <li *ngFor="let sensor of sensors " [class.selected]="sensor === selectedSensor"  (click)="onSelect(sensor)">
+        <span class="badge">{{sensor.id}}</span> {{sensor.name}} <button class="delete" title="delete sensor"
+        (click)="onDelete(sensor)">x</button>
+        
     </li>
 </ul>
 
+
+
+
+
+<app-sensor-detail  [sensorBind]="selectedSensor"></app-sensor-detail>
 <app-messages></app-messages>
 
 

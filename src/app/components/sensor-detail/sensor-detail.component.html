@@ -1,0 +1,17 @@
+<div *ngIf="sensorBind">
+
+    <h2>{{sensorBind.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{sensorBind.id}}</div>
+    <div>
+      <label for="sensor-name">Sensor name: </label>
+      <input id="sensor-name" [(ngModel)]="sensorBind.name" placeholder="name">
+    
+    </div>
+    <div>
+        <label for="sensor-description">Sensor description: </label>
+        <input id="sensor-description" [(ngModel)]="sensorBind.description" placeholder="name">
+    </div>
+    <button  class = "button-padding" mat-raised-button (click)="onSaveSensor()">Save changes</button>
+    
+  
+  </div>

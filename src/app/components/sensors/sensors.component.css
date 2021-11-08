@@ -59,3 +59,19 @@
   input {
     padding: .5rem;
   }
+
+  button.delete {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-color: #000000;
+    color:  white;
+    font-size: 0.9rem;
+    padding: 1px 10px 3px 10px;
+  }
+  
+  button.delete:hover {
+    background-color: #525252;
+    color: white;
+  }
+  
