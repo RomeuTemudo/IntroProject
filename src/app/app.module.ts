@@ -30,7 +30,6 @@ import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { SensorDetailComponent } from './components/sensor-detail/sensor-detail.component';
 import { SensorSearchComponent } from './components/sensor-search/sensor-search.component';
-import { FilterPipe } from './Pipes/filter.pipe';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SensorUploadComponent } from './components/sensor-upload/sensor-upload.component';
 import { MasterSettingsComponent } from './components/master-settings/master-settings.component';
@@ -59,7 +58,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AddSensorComponent,
     SensorDetailComponent,
     SensorSearchComponent,
-    FilterPipe,
     SensorUploadComponent,
     MasterSettingsComponent,
     SensorDownloadComponent

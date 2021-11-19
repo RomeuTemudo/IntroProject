@@ -1,34 +1,22 @@
-.mat-raised-button{
-    
+.mat-raised-button {
     background-color: #405061;
     color: white;
-    margin-bottom:20px;
-    
-  
-  }
+    margin-bottom: 20px;
+}
 
-  .button-padding{
-
+.button-padding {
     margin-left: 5%;
     margin-right: 5%;
-  
-  }
+}
 
-
-  .mat-form-field{
-
+.mat-form-field {
     padding-left: 5%;
     padding-right: 5%;
-  }
+}
 
-  
-
-  @media only screen and (max-width: 500px) {
-  
+@media only screen and (max-width: 500px) {
     .mat-dialog-container {
-
-      width: 600px;
-      height: 1200px;
+        width: 600px;
+        height: 1200px;
     }
-  
-  }
+}

@@ -1,43 +1,40 @@
 import { HttpClient } from '@angular/common/http';
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import {BreakpointObserver} from '@angular/cdk/layout';
-import{delay} from 'rxjs/operators';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
   message = '';
   display = false;
 
   @ViewChild(MatSidenav) sidenav!: MatSidenav;
 
-
-  constructor(private http: HttpClient, private router: Router, private observer: BreakpointObserver ) { }
-
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private observer: BreakpointObserver
+  ) {}
 
   ngOnInit(): void {
-
-
-   this.http.get('http://localhost:8000/api/logged_in', {withCredentials: true})
+    this.http
+      .get('http://localhost:8000/api/logged_in', { withCredentials: true })
       .subscribe(
         (res: any) => {
           this.message = `Hello, ${res.email}`;
         },
-        err => {
-          this.router.navigate(['/login'])
-        }    
-    );
-
+        (err) => {
+          this.router.navigate(['/login']);
+        }
+      );
   }
 
- 
   ngAfterViewInit() {
     this.observer
       .observe(['(max-width: 800px)'])
@@ -53,27 +50,17 @@ export class HomeComponent implements OnInit {
       });
   }
 
-
-
- 
-
   logout(): void {
-
-    this.http.post('http://localhost:8000/api/logout', {}, {withCredentials: true}).subscribe()
-
+    this.http
+      .post('http://localhost:8000/api/logout', {}, { withCredentials: true })
+      .subscribe();
   }
 
   showMasterdata(): void {
-
     this.display = !this.display;
-
   }
 
   showCompanies(): void {
-
     this.display = !this.display;
-    
-
   }
-
 }

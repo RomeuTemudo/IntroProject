@@ -1,66 +1,53 @@
-.mat-raised-button{
-    
+.mat-raised-button {
     background-color: #405061;
     color: white;
-    margin-bottom:20px;
-    
-  
-  }
+    margin-bottom: 20px;
+}
 
-  .button-padding{
-
+.button-padding {
     margin-left: 5%;
     margin-right: 5%;
-  
-  }
+}
 
-
-  .mat-form-field{
-
+.mat-form-field {
     padding-left: 5%;
     padding-right: 5%;
-  }
+}
 
-  
-
-  @media only screen and (max-width: 500px) {
-  
+@media only screen and (max-width: 500px) {
     .mat-dialog-container {
-
-      width: 600px;
-      height: 1200px;
+        width: 600px;
+        height: 1200px;
     }
-  
-  }
+}
 
-  .example-action-buttons {
+.example-action-buttons {
     padding-bottom: 20px;
-    
-  }
-  
-  .example-headers-align .mat-expansion-panel-header-title,
-  .example-headers-align .mat-expansion-panel-header-description {
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
     flex-basis: 0;
-  }
-  
-  .example-headers-align .mat-expansion-panel-header-description {
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
     justify-content: space-between;
     align-items: center;
+}
 
-  }
-  .mat-expansion-panel-header {
-
+.mat-expansion-panel-header {
     font-size: 18px;
-  }
+}
 
-  .users {
+.users {
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
     width: 40%;
     margin-left: 20px;
-  }
-  .users li {
+}
+
+.users li {
     cursor: pointer;
     position: relative;
     left: 0;
@@ -69,30 +56,35 @@
     padding: .3em 0;
     height: 1.7em;
     border-radius: 4px;
-  }
-  .users li:hover {
+}
+
+.users li:hover {
     color: black;
     background-color: #e6e6e6;
     left: .1em;
-  }
-  .users li.selected {
+}
+
+.users li.selected {
     background-color: #34302d;
     color: white;
-  }
-  .users li.selected:hover {
+}
+
+.users li.selected:hover {
     background-color: #34302d;
     color: white;
-  }
-  .users li.selected:active {
+}
+
+.users li.selected:active {
     background-color: #34302d;
     color: white;
-  }
-  .users .badge {
+}
+
+.users .badge {
     display: inline-block;
     font-size: small;
     color: white;
     padding: 0.8em 0.7em 0 0.7em;
-    background-color:#405061;
+    background-color: #405061;
     line-height: 1em;
     position: relative;
     left: -1px;
@@ -100,32 +92,29 @@
     height: 1.8em;
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
-  }
-  
-  button.delete {
+}
+
+button.delete {
     position: absolute;
     right: 5px;
     top: 5px;
     background-color: #000000;
-    color:  white;
+    color: white;
     font-size: 0.9rem;
     padding: 1px 10px 3px 10px;
-  }
-  
-  button.delete:hover {
+}
+
+button.delete:hover {
     background-color: #525252;
     color: white;
-  }
+}
 
-  .label-list-email{
-
+.label-list-email {
     color: rgb(46, 46, 179);
     font-weight: bold;
-  }
+}
 
-  .label-list-role{
-
+.label-list-role {
     color: rgb(7, 160, 45);
     font-weight: bold;
-  }
-
+}

@@ -1,28 +1,27 @@
 <div *ngIf="sensorBind">
-  <div>
-    <h2><b>DETAILS:</b> {{sensorBind.name }}</h2>
-    <div><span>id: </span>{{sensorBind.id}}</div>
-    <div class="padding-inputs">
-      <label for="sensor-name">Sensor name: </label>
-      <input  id="sensor-name" [(ngModel)]="sensorBind.name" >
+    <div>
+        <h2><b>DETAILS:</b> {{sensorBind.name }}</h2>
+        <div><span>id: </span>{{sensorBind.id}}</div>
+        <div class="padding-inputs">
+            <label for="sensor-name">Sensor name: </label>
+            <input id="sensor-name" [(ngModel)]="sensorBind.name">
+        </div>
+        <div>
+            <label for="sensor-description">Sensor description: </label>
+            <input id="sensor-description" [(ngModel)]="sensorBind.description">
+        </div>
+        <button class="button-padding" mat-raised-button (click)="onSaveSensor()">Save changes</button>
     </div>
     <div>
-        <label for="sensor-description">Sensor description: </label>
-        <input id="sensor-description" [(ngModel)]="sensorBind.description" >
+        <h2><b>ADD DATA:</b> {{sensorBind.name}}</h2>
+        <div class="uploadComponent">
+            <app-sensor-upload (sendData)="uploadSensorData($event)"></app-sensor-upload>
+        </div>
     </div>
-    
-    <button  class = "button-padding" mat-raised-button (click)="onSaveSensor()">Save changes</button>
-  </div>
-  <div>
-    <h2><b>ADD DATA:</b> {{sensorBind.name}}</h2>
-    <div class="uploadComponent">
-      <app-sensor-upload  (sendData)="uploadSensorData($event)" ></app-sensor-upload>
+    <div>
+        <h2><b>DOWNLOAD DATA:</b> {{sensorBind.name}}</h2>
+        <div class="uploadComponent">
+            <app-sensor-download [sensorID]="selectedSensorID()"></app-sensor-download>
+        </div>
     </div>
-  </div>
-  <div>
-    <h2><b>DOWNLOAD DATA:</b> {{sensorBind.name}}</h2>
-    <div class="uploadComponent">
-      <app-sensor-download [sensorID]="selectedSensorID()"></app-sensor-download>
-    </div>
-  </div>
 </div>

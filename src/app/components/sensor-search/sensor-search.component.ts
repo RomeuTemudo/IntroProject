@@ -1,36 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Observable, Subject } from 'rxjs';
-import { SensorsComponent } from '../sensors/sensors.component';
-
-import {
-   debounceTime, distinctUntilChanged, switchMap
- } from 'rxjs/operators';
-
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Sensor } from 'src/app/interfaces/sensor';
 import { SensorService } from 'src/app/services/sensors/sensor.service';
 
 @Component({
   selector: 'app-sensor-search',
   templateUrl: './sensor-search.component.html',
-  styleUrls: [ './sensor-search.component.css' ]
+  styleUrls: ['./sensor-search.component.css'],
 })
 export class SensorSearchComponent implements OnInit {
-
-  public selectedSensor? : Sensor | null = null;
-
-  
+  public selectedSensor?: Sensor | null = null;
 
   sensors$!: Observable<Sensor[]>;
   private searchTerms = new Subject<string>();
-
-
 
   constructor(private sensorService: SensorService) {}
 
   // Push a search term into the observable stream.
   search(term: string): void {
- 
     this.searchTerms.next(term);
   }
 
@@ -47,18 +35,13 @@ export class SensorSearchComponent implements OnInit {
         if (term.length === 0) {
           this.selectedSensor = null;
         }
-        
+
         return this.sensorService.searchSensors(term);
-      }),
+      })
     );
   }
 
-  
-
   onSelect(sensor: Sensor): void {
     this.selectedSensor = sensor;
-
-    //this.messageService.add(`SensorComponent: Selected sensor id=${sensor.id}`);
   }
-  
 }

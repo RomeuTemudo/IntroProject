@@ -1,26 +1,19 @@
-.mat-raised-button{
-    
+.mat-raised-button {
     background-color: #405061;
     color: white;
-    margin-bottom:20px;
-    
-  
-  }
+    margin-bottom: 20px;
+}
 
-  .button-padding{
-
+.button-padding {
     margin-left: 5%;
     margin-right: 5%;
-    margin-top:2%
-  
-  }
-  .padding-inputs{
+    margin-top: 2%
+}
+
+.padding-inputs {
     margin-bottom: 5px;
-  }
+}
 
-  .uploadComponent{
-
+.uploadComponent {
     width: 600px;
-  }
-  
- 
+}

@@ -1,28 +1,19 @@
-.mat-raised-button{
-    
+.mat-raised-button {
     background-color: #405061;
     color: white;
-    margin-bottom:20px;
-    
-  
-  }
+    margin-bottom: 20px;
+}
 
-  .button-padding{
-
+.button-padding {
     margin-left: 5%;
     margin-right: 5%;
-  
-  }
+}
 
-
-  .mat-form-field{
-
+.mat-form-field {
     padding-left: 5%;
     padding-right: 5%;
-  }
+}
 
-
-  .button-download{
-
+.button-download {
     background-color: #30965e
-  }
+}

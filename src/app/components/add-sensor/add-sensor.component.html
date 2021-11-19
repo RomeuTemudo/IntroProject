@@ -1,12 +1,11 @@
-
-<div fxLayoutAlign="center center" fxFlexFill>   
-    <mat-card fxFlex="100" >
+<div fxLayoutAlign="center center" fxFlexFill>
+    <mat-card fxFlex="100">
         <h3 fxLayoutAlign="center center">
             Create a new sensor
         </h3>
-        <form [formGroup]="AddSensorForm" (ngSubmit)="onSubmit(dataFromSensor)" fxLayoutAlign ="stretch" fxLayout="column">
+        <form [formGroup]="AddSensorForm" (ngSubmit)="onSubmit(dataFromSensor)" fxLayoutAlign="stretch" fxLayout="column">
             <mat-form-field>
-              <input matInput name="name" id="name" formControlName = "name" placeholder="Name" >
+                <input matInput name="name" id="name" formControlName="name" placeholder="Name">
             </mat-form-field>
             <mat-form-field>
                 <textarea matInput name="description" id="description" formControlName="description" placeholder="Description" rows="1"></textarea>
@@ -14,22 +13,15 @@
             <mat-form-field>
                 <mat-select placeholder="Select a category" formControlName="category_id">
                     <ng-container *ngFor="let category of (categories)">
-                        <mat-option  [value]="category.id">{{category.description}}</mat-option>
+                        <mat-option [value]="category.id">{{category.description}}</mat-option>
                     </ng-container>
                 </mat-select>
             </mat-form-field>
             <app-sensor-upload (sendDataToParent)="uploadSensorData($event)"></app-sensor-upload>
-          
-            
-            <button style="margin-top:15px"  class = "button-padding " mat-raised-button type="submit">ADD SENSOR</button>
+            <button style="margin-top:15px" class="button-padding " mat-raised-button type="submit">ADD SENSOR</button>
         </form>
-       
     </mat-card>
 </div>
 <div>
-    <mat-progress-spinner [mode]="'indeterminate'"  *ngIf="loading$ | async"></mat-progress-spinner>
+    <mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
 </div>
-
-
-
-

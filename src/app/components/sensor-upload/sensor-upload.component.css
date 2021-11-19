@@ -1,27 +1,19 @@
-    .mat-raised-button{
+    .mat-raised-button {
+        background-color: #405061;
+        color: white;
+        margin-bottom: 20px;
+    }
     
-    background-color: #405061;
-    color: white;
-    margin-bottom:20px;
+    .button-padding {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
     
-  
-  }
-
-  .button-padding{
-
-    margin-left: 5%;
-    margin-right: 5%;
-  
-  }
-
-
-  .mat-form-field{
-
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-
-  .button-upload{
-
-    background-color: #0e7df3
-  }
+    .mat-form-field {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    .button-upload {
+        background-color: #0e7df3
+    }

@@ -1,24 +1,29 @@
 .column {
-  float: left;
-  width: 50%;
+    float: left;
+    width: 50%;
 }
+
 
 /* Clear floats after the columns */
+
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
+
 /* HeroesComponent's private CSS styles */
+
 .sensors {
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
     width: 75%;
     margin-left: 20px;
-  }
-  .sensors li {
+}
+
+.sensors li {
     cursor: pointer;
     position: relative;
     left: 0;
@@ -27,30 +32,35 @@
     padding: .3em 0;
     height: 1.7em;
     border-radius: 4px;
-  }
-  .sensors li:hover {
+}
+
+.sensors li:hover {
     color: black;
     background-color: #e6e6e6;
     left: .1em;
-  }
-  .sensors li.selected {
+}
+
+.sensors li.selected {
     background-color: #34302d;
     color: white;
-  }
-  .sensors li.selected:hover {
+}
+
+.sensors li.selected:hover {
     background-color: #34302d;
     color: white;
-  }
-  .sensors li.selected:active {
+}
+
+.sensors li.selected:active {
     background-color: #34302d;
     color: white;
-  }
-  .sensors .badge {
+}
+
+.sensors .badge {
     display: inline-block;
     font-size: small;
     color: white;
     padding: 0.8em 0.7em 0 0.7em;
-    background-color:#405061;
+    background-color: #405061;
     line-height: 1em;
     position: relative;
     left: -1px;
@@ -58,53 +68,50 @@
     height: 1.8em;
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
-  }
+}
 
-  .mat-raised-button{
+.mat-raised-button {
     margin-left: 25px;
     background-color: #405061;
     color: white;
-    margin-bottom:20px;
-  
-  }
-  
-  input {
-    padding: .5rem;
-  }
+    margin-bottom: 20px;
+}
 
-  button.delete {
+input {
+    padding: .5rem;
+}
+
+button.delete {
     position: absolute;
     right: 5px;
     top: 5px;
     background-color: #000000;
-    color:  white;
+    color: white;
     font-size: 0.9rem;
     padding: 1px 10px 3px 10px;
-  }
-  
-  button.delete:hover {
+}
+
+button.delete:hover {
     background-color: #525252;
     color: white;
-  }
+}
 
-  mat-progress-spinner{
-
+mat-progress-spinner {
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 5;
-  }
+}
 
-  .divChart{
-    
+.divChart {
     display: block;
-    width: 400px ;
-    height: 400px ;
-  }
+    width: 400px;
+    height: 400px;
+}
 
-  @media screen and (max-width: 1400px) {
+@media screen and (max-width: 1400px) {
     .column {
-      width: 100%;
+        width: 100%;
     }
-  }
+}

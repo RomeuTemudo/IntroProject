@@ -11,8 +11,6 @@ import { catchError, tap } from 'rxjs/operators';
 export class AuthService {
   constructor(private router: Router, private http: HttpClient) {}
 
-  
-
   setToken(token: string): void {
     localStorage.setItem('token', token);
   }
@@ -31,9 +29,6 @@ export class AuthService {
   }
 
   login({ email, password }: any): Observable<any> {
-    
     return throwError(new Error('Failed to login'));
   }
-
-
 }

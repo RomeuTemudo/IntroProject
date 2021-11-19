@@ -9,11 +9,10 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-    <mat-sidenav #sidenav = "matSidenav">
+    <mat-sidenav #sidenav="matSidenav">
 
         <h4 class="name">{{message}}</h4>
         <mat-divider></mat-divider>
-
         <button mat-button class="menu-button" routerLink="../master-settings">
             <mat-icon>settings</mat-icon>
             <span>Master Settings</span>
@@ -39,15 +38,15 @@
             <span>teams</span>
         </button>
         <mat-divider></mat-divider>
-        <button mat-button class="menu-button" (click)="logout()" routerLink ="../login">
+        <button mat-button class="menu-button" (click)="logout()" routerLink="../login">
             <mat-icon>logout</mat-icon>
             <span>Logout</span>
         </button>
-    </mat-sidenav> 
+    </mat-sidenav>
     <mat-sidenav-content>
-            <div class="content ">
-              <router-outlet></router-outlet>
-            </div>
+        <div class="content ">
+            <router-outlet></router-outlet>
+        </div>
     </mat-sidenav-content>
 
 </mat-sidenav-container>
