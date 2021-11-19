@@ -1,35 +1,44 @@
-<h2>SENSOR MANAGEMENT</h2>
+<div class="row">
+  <div class="column">
+    <h2>SENSOR MANAGEMENT</h2>
 <button  class = "button-padding" mat-raised-button (click)="onAddSensor()">Add new sensor</button>
 <app-sensor-search></app-sensor-search>
+<mat-progress-spinner [mode]="'indeterminate'"  *ngIf="loading$ | async"></mat-progress-spinner>
 
-<!--div>
-  <label for="new-hero">Hero name: </label>
-  <input id="new-hero" #heroName />
-  <label for="new-hero">Hero Description: </label>
-  <input id="new-hero" #heroDescription />
-  <label for="new-hero">Hero category: </label>
-  <input id="caralho" #caralho />-->
-
-  <!-- (click) passes input value to add() and then clears the input 
-  <button class="add-button" (click)="add(heroName.value,heroDescription.value,caralho.value); heroName.value=''">
-    Add hero
-  </button>
-</div>-->
+<button mat-icon-button color="primary"  style="margin-left: 15px;" title="order by name" (click)="onOrderList()">
+  <mat-icon>grading</mat-icon>
+</button>
 <ul class="sensors">
   <!-- class.selected , just to highlight in black the selected sensor-->
     <li *ngFor="let sensor of sensors " [class.selected]="sensor === selectedSensor"  (click)="onSelect(sensor)">
-        <span class="badge">{{sensor.id}}</span> {{sensor.name}} <button class="delete" title="delete sensor"
+        <span class="badge">{{sensor.id}}</span> {{sensor.name}}<button class="delete" title="delete sensor"
         (click)="onDelete(sensor)">x</button>
         
     </li>
 </ul>
+  </div>
+  <div class="column">
+    
+    
+  <app-sensor-detail (chartUpdate) ="sensorChartUpdate($event)"[sensorBind]="selectedSensor"></app-sensor-detail>
+
+  <div style="width:600px; height:600px">
+    <canvas id="canvas"></canvas>
+  </div>
+  </div>
+</div>
+
+
+
+<!--<app-messages></app-messages>-->
 
 
 
 
 
-<app-sensor-detail  [sensorBind]="selectedSensor"></app-sensor-detail>
-<app-messages></app-messages>
+
+
+
 
 
 <!--<mat-selection-list #sensor [multiple]="false">

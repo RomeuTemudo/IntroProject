@@ -11,16 +11,18 @@
 
     margin-left: 5%;
     margin-right: 5%;
-    margin-top:2%
   
   }
-  .padding-inputs{
-    margin-bottom: 5px;
+
+
+  .mat-form-field{
+
+    padding-left: 5%;
+    padding-right: 5%;
   }
 
-  .uploadComponent{
 
-    width: 600px;
+  .button-download{
+
+    background-color: #30965e
   }
-  
- 

@@ -1,5 +1,5 @@
 <div id="search-component">
-    <label for="search-box">Hero Search</label>
+    <label for="search-box">Search sensor</label>
     <input #searchBox id="search-box" (input)="search(searchBox.value)" />
   
     <ul class="search-result">
@@ -10,4 +10,5 @@
       </li>
     </ul>
 </div>
-<app-sensor-detail  [sensorBind]="selectedSensor"></app-sensor-detail>
+
+<app-sensor-detail *ngIf="this.selectedSensor" [sensorBind]="selectedSensor"></app-sensor-detail>

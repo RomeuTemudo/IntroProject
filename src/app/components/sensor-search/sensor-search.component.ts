@@ -17,17 +17,20 @@ import { SensorService } from 'src/app/services/sensors/sensor.service';
 })
 export class SensorSearchComponent implements OnInit {
 
-  selectedSensor? : Sensor
+  public selectedSensor? : Sensor | null = null;
 
   
 
   sensors$!: Observable<Sensor[]>;
   private searchTerms = new Subject<string>();
 
+
+
   constructor(private sensorService: SensorService) {}
 
   // Push a search term into the observable stream.
   search(term: string): void {
+ 
     this.searchTerms.next(term);
   }
 
@@ -40,7 +43,13 @@ export class SensorSearchComponent implements OnInit {
       distinctUntilChanged(),
 
       // switch to new search observable each time the term changes
-      switchMap((term: string) => this.sensorService.searchSensors(term)),
+      switchMap((term: string) => {
+        if (term.length === 0) {
+          this.selectedSensor = null;
+        }
+        
+        return this.sensorService.searchSensors(term);
+      }),
     );
   }
 
@@ -48,9 +57,6 @@ export class SensorSearchComponent implements OnInit {
 
   onSelect(sensor: Sensor): void {
     this.selectedSensor = sensor;
-
-    
-  
 
     //this.messageService.add(`SensorComponent: Selected sensor id=${sensor.id}`);
   }

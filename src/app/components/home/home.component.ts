@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.http.get('http://localhost:8000/api/logged_in', {withCredentials: true})
+   this.http.get('http://localhost:8000/api/logged_in', {withCredentials: true})
       .subscribe(
         (res: any) => {
           this.message = `Hello, ${res.email}`;

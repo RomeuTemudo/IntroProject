@@ -1,9 +1,10 @@
+
 <div fxLayoutAlign="center center" fxFlexFill>   
-    <mat-card fxFlex="45" >
+    <mat-card fxFlex="100" >
         <h3 fxLayoutAlign="center center">
             Create a new sensor
         </h3>
-        <form [formGroup]="AddSensorForm" (ngSubmit)="onSubmit()" fxLayoutAlign ="stretch" fxLayout="column">
+        <form [formGroup]="AddSensorForm" (ngSubmit)="onSubmit(dataFromSensor)" fxLayoutAlign ="stretch" fxLayout="column">
             <mat-form-field>
               <input matInput name="name" id="name" formControlName = "name" placeholder="Name" >
             </mat-form-field>
@@ -17,8 +18,18 @@
                     </ng-container>
                 </mat-select>
             </mat-form-field>
-            <button  class = "button-padding" mat-raised-button type="submit">ADD SENSOR</button>
+            <app-sensor-upload (sendDataToParent)="uploadSensorData($event)"></app-sensor-upload>
+          
+            
+            <button style="margin-top:15px"  class = "button-padding " mat-raised-button type="submit">ADD SENSOR</button>
         </form>
+       
     </mat-card>
 </div>
+<div>
+    <mat-progress-spinner [mode]="'indeterminate'"  *ngIf="loading$ | async"></mat-progress-spinner>
+</div>
+
+
+
 

@@ -1,0 +1,53 @@
+<h1 fxLayoutAlign="center" style ="padding: 50px;">Master Settings</h1>
+<mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         Create user
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <div fxLayoutAlign="center" style ="padding: 50px;">   
+            <mat-card fxFlex="50" >
+                <h3 fxLayoutAlign="center center">
+            
+                </h3>
+                <form [formGroup]="AddUserForm" (ngSubmit)="onSubmit()" fxLayoutAlign ="stretch" fxLayout="column">
+                    <mat-form-field>
+                    <input matInput name="email" id="email" formControlName = "email" placeholder="Email">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type ="password" name="password" id="password" formControlName="password" placeholder="Password">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select placeholder="Select role" formControlName="role_id">
+                            <ng-container *ngFor="let role of (roles)">
+                                <mat-option  [value]="role.id">{{role.description}}</mat-option>
+                            </ng-container>
+                        </mat-select>
+                    </mat-form-field>            
+                    <button style="margin-top:15px"  class = "button-padding " mat-raised-button type="submit">Create User</button>
+                </form>
+            </mat-card>
+        </div>
+  
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          User List
+        </mat-panel-title>
+        <mat-panel-description>
+  
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ul class="users">
+        <!-- class.selected , just to highlight in black the selected sensor-->
+          <li *ngFor="let user of users ">
+              <span class="badge">{{user.id}}</span><span class="label-list-email">Email:</span> {{user.email}}<span class="label-list-role" style="margin-left:20px;">Role:</span> {{user.role_description}} <button class="delete" title="delete sensor"
+              (click)="onDelete(user)">x</button>
+              
+          </li>
+      </ul>
+    
+    </mat-expansion-panel>
+  </mat-accordion>

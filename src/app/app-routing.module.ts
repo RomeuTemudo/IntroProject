@@ -7,6 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { SensorsComponent } from './components/sensors/sensors.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { AddSensorComponent } from './components/add-sensor/add-sensor.component';
+import { MasterSettingsComponent } from './components/master-settings/master-settings.component';
+import { SensorUploadComponent } from './components/sensor-upload/sensor-upload.component';
 
 
 
@@ -18,8 +20,10 @@ const routes: Routes = [
   [
     {path: '', redirectTo: 'sensors', pathMatch:'full'}, //home por default abre o sensors
     {path: 'sensors',component:SensorsComponent},
+    
    
   ]},
+  {path: 'master-settings',component:MasterSettingsComponent},
   {path: 'add-sensor', component:AddSensorComponent},
   {path: 'sensors',component:SensorsComponent},
   {path: '', redirectTo: '/login', pathMatch:'full'},

@@ -31,6 +31,14 @@ import { FormsModule } from '@angular/forms';
 import { SensorDetailComponent } from './components/sensor-detail/sensor-detail.component';
 import { SensorSearchComponent } from './components/sensor-search/sensor-search.component';
 import { FilterPipe } from './Pipes/filter.pipe';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SensorUploadComponent } from './components/sensor-upload/sensor-upload.component';
+import { MasterSettingsComponent } from './components/master-settings/master-settings.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { SensorDownloadComponent } from './components/sensor-download/sensor-download.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+
 
 
 
@@ -51,7 +59,10 @@ import { FilterPipe } from './Pipes/filter.pipe';
     AddSensorComponent,
     SensorDetailComponent,
     SensorSearchComponent,
-    FilterPipe
+    FilterPipe,
+    SensorUploadComponent,
+    MasterSettingsComponent,
+    SensorDownloadComponent
 
     
   
@@ -78,7 +89,11 @@ import { FilterPipe } from './Pipes/filter.pipe';
     MatListModule,
     MatDialogModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule,
+    MatSnackBarModule
+
 
     
 
@@ -90,6 +105,6 @@ import { FilterPipe } from './Pipes/filter.pipe';
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents:[AddSensorComponent]
+  entryComponents:[AddSensorComponent] //Dialog modal
 })
 export class AppModule { }

@@ -6,10 +6,14 @@ import { MessageService } from '../messages/message.service';
 import { HttpClient,HttpHeaders, HttpParamsOptions } from '@angular/common/http';
 import { catchError,map,tap } from 'rxjs/operators';
 import { Category } from 'src/app/interfaces/category';
+import { SensorData } from 'src/app/interfaces/sensorData';
+import { Role } from 'src/app/interfaces/role';
+
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+   'Content-Type':  'application/json',
+   
     //Authorization: 'my-auth-token'
   })
 };
@@ -30,6 +34,9 @@ export class SensorService {
   private sensorEditUrl = 'http://localhost:8000/api/update_sensor';
   private sensorAddUrl = 'http://localhost:8000/api/add_sensor';
   private sensorSearchUrl = 'http://localhost:8000/api/search_sensor';
+  private sensorAddSensorDataUrl = 'http://localhost:8000/api/add_sensor_data';
+  private sensorGetSensorDataUrl = 'http://localhost:8000/api/get_sensor_data';
+  private getRolesUrl = 'http://localhost:8000/api/get_roles';
 
 
   getCategories(): Observable<Category[]>{
@@ -43,12 +50,13 @@ export class SensorService {
   }
   
 
-  getSensors(): Observable<Sensor[]>{
+  getSensors(isOrdered? : boolean): Observable<Sensor[]>{
 
    
+
     //if object -> Observable result with the RxJS map() operator
     
-    return this.http.get<Sensor[]>(this.sensorListUrl)
+    return this.http.get<Sensor[]>(`${this.sensorListUrl}/?sort=${isOrdered}`)
       .pipe(
         tap(_ => this.log('fetched sensors')),
         catchError(this.handleError<Sensor[]>('List of sensors', []))
@@ -56,7 +64,28 @@ export class SensorService {
     
   }
 
+ /*dailyForecast() {
+    return this.http.get("http://samples.openweathermap.org/data/2.5/history/city?q=Warren,OH&appid=b6907d289e10d714a6e88b30761fae22",httpOptions)
+      .pipe(
+        map(result => result)
+      )
+  }*/
+
+  getSensorData(id : any): Observable<SensorData[]>{
+
+    
+    //return this.http.get<Sensor[]>(`${this.sensorSearchUrl}/?name=${term}`)
+    return this.http.get<SensorData[]>(`${this.sensorGetSensorDataUrl}/?id=${id}`,httpOptions)
+      .pipe(
+       
+        tap(_ => this.log('sensor data is here baby')),
+      catchError(this.handleError<SensorData[]>('Sensors Data', []))
+      );
+  }
+
   searchSensors(term: string): Observable<Sensor[]>{
+
+    console.log("searching...");
 
     if(!term.trim()){
 
@@ -85,6 +114,8 @@ export class SensorService {
 
   updateSensor(sensor: Sensor): Observable<Sensor[]>{
 
+  
+
     return this.http.post<Sensor[]>(this.sensorEditUrl,sensor,httpOptions)
       .pipe(
         tap(_ => this.log('sensor updated')),
@@ -96,11 +127,44 @@ export class SensorService {
 
   addSensor(sensor: Sensor): Observable<Sensor> {
 
-    console.log(sensor);
+    //console.log(sensor)
+    
     return this.http.post<Sensor>(this.sensorAddUrl, sensor, httpOptions).pipe(
       tap(_ => this.log('new sensor created')),
       catchError(this.handleError<Sensor>('addHero'))
     );
+  }
+
+  addSensorData(sensorData: any, sensorId?: any){
+    // from update has ID, from create no ID
+   
+    //format date to ISO
+    for(let i=0; i < sensorData.length; i++){
+
+      var dateobj = new Date(sensorData[i].timestamp)
+      var dateIsoformat = dateobj.toISOString();
+
+
+      sensorData[i].timestamp = dateIsoformat;
+    }  
+
+    
+    return this.http.post<SensorData>(this.sensorAddSensorDataUrl,JSON.stringify({id: sensorId, data: sensorData }),httpOptions).pipe(
+      tap(_ => this.log('new sensor created'))
+
+    );
+
+
+  }
+
+  getRoles(): Observable<Role[]>{
+
+    return this.http.get<Role[]>(this.getRolesUrl)
+      .pipe(
+        tap(_ => this.log('fetched roles')),
+        catchError(this.handleError<Role[]>('List of roles', []))
+      );
+
   }
 
  

@@ -1,0 +1,4 @@
+<div fxLayoutAlign ="stretch" fxLayout="column">
+    <button type="button" class = "button-padding button-upload" mat-raised-button (click)="fileInput.click()">Upload Data from CSV</button>
+    <input  hidden type="file" (change)="UploadedFile($event)" #fileInput  accept=".csv" />
+</div>

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormControlName, FormGroup } from '@angular/forms';
+import { FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Category } from 'src/app/interfaces/category';
@@ -8,6 +8,12 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Sensor } from 'src/app/interfaces/sensor';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
+import { Papa } from 'ngx-papaparse';
+import { LoadingService } from 'src/app/services/loading.service';
+import { MatSnackBar,MatSnackBarHorizontalPosition,MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { SensorsComponent } from '../sensors/sensors.component';
+
+
 
 
 
@@ -21,37 +27,63 @@ import { Inject } from '@angular/core';
   styleUrls: ['./add-sensor.component.css']
 })
 export class AddSensorComponent implements OnInit {
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
  
 
   categories: Category[] = [];
+
+  msg: any;
  
+  dataFromSensor: any;
 
   sensors: Sensor[] = [];
   
 
   AddSensorForm = new FormGroup({
 
-    name: new FormControl(''),
+    name: new FormControl('', Validators.required),
     description: new FormControl(''),
-    category_id: new FormControl('')
+    category_id: new FormControl('', Validators.required)
    
   })
 
-  caralho: FormControl[] = [];
 
-  constructor(private router: Router, private http: HttpClient, private sensorService: SensorService, public dialogRef: MatDialogRef<AddSensorComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+
+  //starts as false , defined on service!
+  loading$ = this.loadingService.loading$;
+
+  constructor(private router: Router, private http: HttpClient,private _snackBar: MatSnackBar, private sensorService: SensorService,private papa: Papa,public loadingService: LoadingService ,public dialogRef: MatDialogRef<AddSensorComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
 
-    
-    
+       
     this.getCategories();
-
     
+
   }
 
-  onSubmit(): void {
+  uploadSensorData($event: any){
+    
+    this.dataFromSensor = $event;
+  }
 
+
+  showSnack(message: string){
+
+   
+    this._snackBar.open(message,"close",{horizontalPosition: this.horizontalPosition, verticalPosition: this.verticalPosition});
+  }
+
+
+
+
+
+  onSubmit(dataFromSensor : any): void {
+
+   
     
     if(this.AddSensorForm.valid){
 
@@ -59,41 +91,36 @@ export class AddSensorComponent implements OnInit {
       var name = this.AddSensorForm.getRawValue().name;
       var description = this.AddSensorForm.getRawValue().description;
       var category_id = this.AddSensorForm.getRawValue().category_id;
+      var sensorData = dataFromSensor;
+
+
+    
+      
+   
 
       this.sensorService.addSensor({ name, description, category_id } as unknown as Sensor)
       .subscribe(sensor => {
         if(this.data.onAdd) {
           this.data.onAdd(sensor);
         }
-       
+        
         this.sensors.push(sensor);
+
+        //after create and push add data
+        this.sensorService.addSensorData(sensorData).subscribe();
+
+       
+
+       
+       
+
+      
       });
       
-
-      //call + get cookies
-      /*this.http.post<Sensor>('http://localhost:8000/api/add_sensor',this.AddSensorForm.getRawValue())
-        .subscribe(sensor => {
-          this.sensors.push(sensor)
-        });*/
-
-        
-
-
-       
-
-        
+      this.showSnack("Sensor Created!");
+      
       this.onClose();
 
-      
-
-      /*this.auth.login(this.loginForm.value).subscribe(
-        (result) => {
-          
-        },
-        (err: Error)=> {
-          alert(err.message);
-        }
-      );*/
     }
   }
 
